@@ -1,0 +1,44 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.2.0"
+}
+apply plugin: 'kotlin'
+apply plugin: 'idea'
+
+group 'net.codesanctum'
+version '0.1.0'
+
+intellij {
+    version '2018.1'
+    downloadSources true
+    instrumentCode true
+}
+
+repositories {
+    jcenter()
+}
+
+patchPluginXml {
+    changeNotes """
+      Change Note.<br>
+      Warning!!! This plugin is for personal idea plugin practice"""
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+publishPlugin {
+    username ideaPluginUsername
+    password ideaPluginPassword
+}
